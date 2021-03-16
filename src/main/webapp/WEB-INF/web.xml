@@ -1,7 +1,56 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
 
-<web-app>
+  <servlet>
+    <servlet-name>HelloServlet</servlet-name>
+    <servlet-class>com.luqiancheng.week2.HelloServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>HelloServlet</servlet-name>
+    <url-pattern>/homeWork1</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>register</servlet-name>
+    <servlet-class>com.luqiancheng.week2.Register</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>register</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>register1</servlet-name>
+    <servlet-class>com.luqiancheng.week2.Register1</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>register1</servlet-name>
+    <url-pattern>/register1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>register2</servlet-name>
+    <servlet-class>com.luqiancheng.week2.Register2</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>register2</servlet-name>
+    <url-pattern>/register2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>register3</servlet-name>
+    <servlet-class>com.luqiancheng.week2.Register3</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>register3</servlet-name>
+    <url-pattern>/register3</url-pattern>
+  </servlet-mapping>
+
+
   <display-name>Archetype Created Web Application</display-name>
 </web-app>

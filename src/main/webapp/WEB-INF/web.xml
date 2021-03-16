@@ -37,6 +37,8 @@
     <servlet-class>com.luqiancheng.week2.Register2</servlet-class>
   </servlet>
 
+
+
   <servlet-mapping>
     <servlet-name>register2</servlet-name>
     <url-pattern>/register2</url-pattern>

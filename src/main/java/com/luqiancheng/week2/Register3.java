@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 
 public class Register3 extends HttpServlet {
     @Override
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setHeader("Content-type", "text/html;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");

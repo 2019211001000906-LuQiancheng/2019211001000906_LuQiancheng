@@ -16,6 +16,7 @@ public class Register2 extends HttpServlet {
         String msg;
         if (!email.equals("")){
             if (email.contains("@")){
+
                 msg = "OK";
             }else {
                 msg = "* ERROR : Email format is not correct !";

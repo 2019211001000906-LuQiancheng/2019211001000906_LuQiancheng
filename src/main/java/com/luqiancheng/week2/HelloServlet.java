@@ -18,6 +18,7 @@ public class HelloServlet extends HttpServlet {
         pw.print("<h1>Name :Lu Qiancheng</h1>");
         pw.print("<h1>ID : 2019211001000906</h1>");
         pw.print("<h1>Date and Time "+new Date()+"</h1>");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

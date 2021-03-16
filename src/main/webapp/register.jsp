@@ -75,82 +75,84 @@
         }
     </style>
 
+
+
     <script>
-            var c = "1";
-            function a() {
-                $.post({
-                    url:"${pageContext.request.contextPath}/register",
-                    data:{"name":$("#username").val()},
-                    success:function (data) {
-                        console.log(data);
-                        if (data.toString() ==='OK'){
-                            c = c + "1";
-                            $("#userInfo").css("color","green");
-                        }else {
-                            $("#userInfo").css("color","red");
-                        }
-                        $("#userInfo").html(data);
-                    }
-                })
-            }
-            function a1() {
-                $.post({
-                    url:"${pageContext.request.contextPath}/register1",
-                    data:{"password":$("#password").val()},
-                    success:function (data) {
-                        console.log(data);
-                        if (data.toString() ==='OK'){
-                            c = c + "1";
-                            $("#pwdInfo").css("color","green");
-                        }else {
-                            $("#pwdInfo").css("color","red");
-                        }
-                        $("#pwdInfo").html(data);
-                    }
-                })
-            }
-
-            function a2() {
-                $.post({
-                    url:"${pageContext.request.contextPath}/register2",
-                    data:{"email":$("#Email").val()},
-                    success:function (data) {
-                        console.log(data);
-                        if (data.toString() ==='OK'){
-                            c = c + "1";
-                            $("#EmaInfo").css("color","green");
-                        }else {
-                            $("#EmaInfo").css("color","red");
-                        }
-                        $("#EmaInfo").html(data);
-                    }
-                })
-            }
-            function a3() {
-                $.post({
-                    url:"${pageContext.request.contextPath}/register3",
-                    data:{"date":$("#date").val()},
-                    success:function (data) {
+        var c = "1";
+        function a() {
+            $.post({
+                url:"${pageContext.request.contextPath}/register",
+                data:{"name":$("#username").val()},
+                success:function (data) {
+                    console.log(data);
+                    if (data.toString() ==='OK'){
                         c = c + "1";
-                        console.log(data);
-                        if (data.toString() ==='OK'){
-                            $("#DateInfo").css("color","green");
-                        }else {
-                            $("#DateInfo").css("color","red");
-                        }
-                        $("#DateInfo").html(data);
+                        $("#userInfo").css("color","green");
+                    }else {
+                        $("#userInfo").css("color","red");
                     }
-                })
-            }
-
-            function success() {
-                var submit = $('#submit');
-                if (c.toString() === "11111"){
-                    submit.removeAttr("disabled");
-                }else {
-                    submit.attr("disabled","disabled");
+                    $("#userInfo").html(data);
                 }
+            })
+        }
+        function a1() {
+            $.post({
+                url:"${pageContext.request.contextPath}/register1",
+                data:{"password":$("#password").val()},
+                success:function (data) {
+                    console.log(data);
+                    if (data.toString() ==='OK'){
+                        c = c + "1";
+                        $("#pwdInfo").css("color","green");
+                    }else {
+                        $("#pwdInfo").css("color","red");
+                    }
+                    $("#pwdInfo").html(data);
+                }
+            })
+        }
+
+        function a2() {
+            $.post({
+                url:"${pageContext.request.contextPath}/register2",
+                data:{"email":$("#Email").val()},
+                success:function (data) {
+                    console.log(data);
+                    if (data.toString() ==='OK'){
+                        c = c + "1";
+                        $("#EmaInfo").css("color","green");
+                    }else {
+                        $("#EmaInfo").css("color","red");
+                    }
+                    $("#EmaInfo").html(data);
+                }
+            })
+        }
+        function a3() {
+            $.post({
+                url:"${pageContext.request.contextPath}/register3",
+                data:{"date":$("#date").val()},
+                success:function (data) {
+                    c = c + "1";
+                    console.log(data);
+                    if (data.toString() ==='OK'){
+                        $("#DateInfo").css("color","green");
+                    }else {
+                        $("#DateInfo").css("color","red");
+                    }
+                    $("#DateInfo").html(data);
+                }
+            })
+        }
+
+        function success() {
+            var submit = $('#submit');
+            if (c.toString() === "11111"){
+                submit.removeAttr("disabled");
+            }else {
+                submit.attr("disabled","disabled");
             }
+        }
 
     </script>
 

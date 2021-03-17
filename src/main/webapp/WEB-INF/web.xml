@@ -36,6 +36,16 @@
     <servlet-name>register2</servlet-name>
     <servlet-class>com.luqiancheng.week2.Register2</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>registerServlet</servlet-name>
+    <servlet-class>com.luqiancheng.week3.RegisterServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>registerServlet</servlet-name>
+    <url-pattern>/jdbc</url-pattern>
+  </servlet-mapping>
+
 
 
 

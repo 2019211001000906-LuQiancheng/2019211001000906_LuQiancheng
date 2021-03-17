@@ -75,82 +75,106 @@
         }
     </style>
 
-    <script>
-            var c = "1";
-            function a() {
-                $.post({
-                    url:"${pageContext.request.contextPath}/register",
-                    data:{"name":$("#username").val()},
-                    success:function (data) {
-                        console.log(data);
-                        if (data.toString() ==='OK'){
-                            c = c + "1";
-                            $("#userInfo").css("color","green");
-                        }else {
-                            $("#userInfo").css("color","red");
-                        }
-                        $("#userInfo").html(data);
-                    }
-                })
-            }
-            function a1() {
-                $.post({
-                    url:"${pageContext.request.contextPath}/register1",
-                    data:{"password":$("#password").val()},
-                    success:function (data) {
-                        console.log(data);
-                        if (data.toString() ==='OK'){
-                            c = c + "1";
-                            $("#pwdInfo").css("color","green");
-                        }else {
-                            $("#pwdInfo").css("color","red");
-                        }
-                        $("#pwdInfo").html(data);
-                    }
-                })
-            }
 
-            function a2() {
-                $.post({
-                    url:"${pageContext.request.contextPath}/register2",
-                    data:{"email":$("#Email").val()},
-                    success:function (data) {
-                        console.log(data);
-                        if (data.toString() ==='OK'){
-                            c = c + "1";
-                            $("#EmaInfo").css("color","green");
-                        }else {
-                            $("#EmaInfo").css("color","red");
-                        }
-                        $("#EmaInfo").html(data);
-                    }
-                })
-            }
-            function a3() {
-                $.post({
-                    url:"${pageContext.request.contextPath}/register3",
-                    data:{"date":$("#date").val()},
-                    success:function (data) {
+
+    <script type="text/javascript">
+        var c = "1";
+        function a() {
+            $.post({
+                url:"${pageContext.request.contextPath}/register",
+                data:{"name":$("#username").val()},
+                success:function (data) {
+                    console.log(data);
+                    if (data.toString() ==='OK'){
                         c = c + "1";
-                        console.log(data);
-                        if (data.toString() ==='OK'){
-                            $("#DateInfo").css("color","green");
-                        }else {
-                            $("#DateInfo").css("color","red");
-                        }
-                        $("#DateInfo").html(data);
+                        $("#userInfo").css("color","green");
+                    }else {
+                        $("#userInfo").css("color","red");
                     }
-                })
-            }
-
-            function success() {
-                var submit = $('#submit');
-                if (c.toString() === "11111"){
-                    submit.removeAttr("disabled");
-                }else {
-                    submit.attr("disabled","disabled");
+                    $("#userInfo").html(data);
+                    console.log(c);
                 }
+            })
+        }
+        function a1() {
+            $.post({
+                url:"${pageContext.request.contextPath}/register1",
+                data:{"password":$("#password").val()},
+                success:function (data) {
+                    console.log(data);
+                    if (data.toString() ==='OK'){
+                        c = c + "1";
+                        $("#pwdInfo").css("color","green");
+                    }else {
+                        $("#pwdInfo").css("color","red");
+                    }
+                    $("#pwdInfo").html(data);
+                    console.log(c);
+                }
+            })
+        }
+
+        function a2() {
+            $.post({
+                url:"${pageContext.request.contextPath}/register2",
+                data:{"email":$("#Email").val()},
+                success:function (data) {
+                    console.log(data);
+                    if (data.toString() ==='OK'){
+                        c = c + "1";
+                        $("#EmaInfo").css("color","green");
+                    }else {
+                        $("#EmaInfo").css("color","red");
+                    }
+                    $("#EmaInfo").html(data);
+                    console.log(c);
+                }
+            })
+        }
+        function a3() {
+            $.post({
+                url:"${pageContext.request.contextPath}/register3",
+                data:{"date":$("#date").val()},
+                success:function (data) {
+                    c = c + "1";
+                    console.log(data);
+                    if (data.toString() ==='OK'){
+                        $("#DateInfo").css("color","green");
+                    }else {
+                        $("#DateInfo").css("color","red");
+                    }
+                    $("#DateInfo").html(data);
+                    console.log(c);
+                    console.log(c.toString() === "11111");
+                }
+            })
+        }
+        $('#submit').hover(function(){
+            console.log(c);
+            if (c.toString() === "11111"){
+                $('#submit').attr("disabled",false);
+            }else {
+                $('#submit').attr("disabled",true);
             }
+        });
+
+        // $('#submit').addEventListener('mouseenter',function() {
+        //     console.log(c);
+        //     if (c.toString() === "11111"){
+        //         $('#submit').removeAttr("disabled");
+        //     }else {
+        //         $('#submit').attr("disabled","disabled");
+        //     }
+        // })
+        // function success() {
+        //     var submit = $('#submit');
+        //     console.log(c);
+        //     if (c.toString() === "11111"){
+        //         submit.removeAttr("disabled");
+        //     }else {
+        //         submit.attr("disabled","disabled");
+        //     }
+        // }
 
     </script>
 
@@ -160,21 +184,21 @@
 <div class="login1">
     <div class="login2">
         <h3 class="title">New User Registration!</h3>
-        <form action="#" method="post">
-            <input type="text" id="username" onblur="a()" placeholder="username"/> <br/>
+        <form action="${pageContext.request.contextPath}/jdbc" method="post">
+            <input type="text" id="username" name="name" onblur="a()" placeholder="username"/> <br/>
             <span id="userInfo"></span> <br/>
-            <input type="password" id="password" onblur="a1()" placeholder="password"/> <br/>
+            <input type="password" id="password"name="password" onblur="a1()" placeholder="password"/> <br/>
             <span id="pwdInfo"></span> <br/>
-            <input type="email" id="Email" onblur="a2()" placeholder="Email"> <br/>
+            <input type="email" id="Email" name="email" onblur="a2()" placeholder="Email"> <br/>
             <span id="EmaInfo"></span> <br/>
             <div class="title1">
                 <span>Gender</span>
-                <input type="radio" name="sex" checked="checked" /> Male
-                <input type="radio" name="sex" /> Female
+                <input type="radio" name="sex" value="Male" checked="checked" /> Male
+                <input type="radio" name="sex" value="Female"/> Female
             </div>
-            <input type="date" id="date" onblur="a3()" placeholder="Date of Birth(yyyy-mm-dd)"> <br/>
+            <input type="date" id="date" name="date" onblur="a3()" placeholder="Date of Birth(yyyy-mm-dd)"> <br/>
             <span id="DateInfo"></span> <br/>
-            <input class="an" type="submit" id="submit" value="Register"/>
+            <input class="an" type="submit"  id="submit" value="Register"/>
         </form>
     </div>
 </div>

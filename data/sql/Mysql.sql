@@ -5,6 +5,6 @@ CREATE TABLE usertable(
   username varchar(50) not null,
   password varchar(20) not null,
   email varchar(20)not NULL,
-  gender varchar(10),
+  gender varchar(10)not null,
   birthdate date
 );

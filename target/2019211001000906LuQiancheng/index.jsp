@@ -14,5 +14,6 @@
 
 <h2><a href="${pageContext.request.contextPath}/homeWork1">homeWork1</a></h2>
 <h2><a href="${pageContext.request.contextPath}/register.jsp">register</a></h2>
+<h2><a href="${pageContext.request.contextPath}/config">config</a></h2>
 </body>
 </html>

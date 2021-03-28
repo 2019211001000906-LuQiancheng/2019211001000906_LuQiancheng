@@ -185,18 +185,18 @@
     <div class="login2">
         <h3 class="title">New User Registration!</h3>
         <form action="${pageContext.request.contextPath}/jdbc" method="post">
-            <input type="text" id="username" name="name" onblur="a()" placeholder="username"/> <br/>
+            <input type="text" id="username" name="name" onblur="a()" placeholder="username" required/> <br/>
             <span id="userInfo"></span> <br/>
-            <input type="password" id="password"name="password" onblur="a1()" placeholder="password"/> <br/>
+            <input type="password" id="password" name="password" onblur="a1()" placeholder="password" minlength="8" required/> <br/>
             <span id="pwdInfo"></span> <br/>
-            <input type="email" id="Email" name="email" onblur="a2()" placeholder="Email"> <br/>
+            <input type="email" id="Email" name="email" onblur="a2()" placeholder="Email" required> <br/>
             <span id="EmaInfo"></span> <br/>
             <div class="title1">
                 <span>Gender</span>
                 <input type="radio" name="sex" value="Male" checked="checked" /> Male
                 <input type="radio" name="sex" value="Female"/> Female
             </div>
-            <input type="date" id="date" name="date" onblur="a3()" placeholder="Date of Birth(yyyy-mm-dd)"> <br/>
+            <input type="date" id="date" name="date" onblur="a3()" placeholder="Date of Birth(yyyy-mm-dd)" required> <br/>
             <span id="DateInfo"></span> <br/>
             <input class="an" type="submit"  id="submit" value="Register"/>
         </form>

@@ -9,11 +9,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <html>
 <body>
+<%@include file="header.jsp" %>
 <h2>Hello World!</h2>
 
 
 <h2><a href="${pageContext.request.contextPath}/homeWork1">homeWork1</a></h2>
 <h2><a href="${pageContext.request.contextPath}/register.jsp">register</a></h2>
 <h2><a href="${pageContext.request.contextPath}/config">config</a></h2>
+<h2><a href="${pageContext.request.contextPath}/login.jsp">login</a></h2>
+
+<%@include file="footer.jsp" %>
+
 </body>
 </html>

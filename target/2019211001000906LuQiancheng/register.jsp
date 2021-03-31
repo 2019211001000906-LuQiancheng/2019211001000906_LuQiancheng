@@ -18,15 +18,14 @@
             margin: 10px 0px;
         }
         .login1 {
-            position: absolute;
+            height: 421px;
             width: 100%;
-            background-color:  rgb(161, 160, 160);
         }
         .login2 {
             position: absolute;
             width: 322px;
             height: 421px;
-            top: 120px;
+            top: 251px;
             left: 39%;
         }
         .login2 input {
@@ -180,6 +179,7 @@
 
 </head>
 <body>
+<%@include file="header.jsp" %>
 
 <div class="login1">
     <div class="login2">
@@ -202,5 +202,6 @@
         </form>
     </div>
 </div>
+<%@include file="footer.jsp" %>
 </body>
 </html>

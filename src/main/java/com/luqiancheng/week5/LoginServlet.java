@@ -16,24 +16,25 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        String driver = getServletConfig().getServletContext().getInitParameter("driver");
-        String url = getServletConfig().getServletContext().getInitParameter("url");
-        String username = getServletConfig().getServletContext().getInitParameter("username");
-        String password = getServletConfig().getServletContext().getInitParameter("password");
-
-        try {
-            Class.forName(driver);
-            this.connection = DriverManager.getConnection(url,username,password);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if(this.connection != null){
-            System.out.println("连接成功数据库了！");
-        }else{
-            System.out.println("连接失败了！");
-        }
+//        String driver = getServletConfig().getServletContext().getInitParameter("driver");
+//        String url = getServletConfig().getServletContext().getInitParameter("url");
+//        String username = getServletConfig().getServletContext().getInitParameter("username");
+//        String password = getServletConfig().getServletContext().getInitParameter("password");
+//
+//        try {
+//            Class.forName(driver);
+//            this.connection = DriverManager.getConnection(url,username,password);
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        if(this.connection != null){
+//            System.out.println("连接成功数据库了！");
+//        }else{
+//            System.out.println("连接失败了！");
+//        }
+       connection = (Connection) getServletContext().getAttribute("connection");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,9 +49,13 @@ public class LoginServlet extends HttpServlet {
             preparedStatement.setString(2,password);
             resultset = preparedStatement.executeQuery();
             if (resultset.next()){
-                PrintWriter pw = response.getWriter();
-                pw.print("<h1>Login Success !!!</h1>");
-                pw.print("<h1>Welcome :"+username+"</h1>");
+               request.setAttribute("id",resultset.getInt("id"));
+               request.setAttribute("username",resultset.getString("username"));
+               request.setAttribute("password",resultset.getString("password"));
+               request.setAttribute("email",resultset.getString("email"));
+               request.setAttribute("gender",resultset.getString("gender"));
+               request.setAttribute("birthdate",resultset.getString("birthdate"));
+               request.getRequestDispatcher("/userinfo.jsp").forward(request,response);
             }else {
                 request.setAttribute("msg","UserName OR Password Error!");
                 request.getRequestDispatcher("/login.jsp").forward(request,response);

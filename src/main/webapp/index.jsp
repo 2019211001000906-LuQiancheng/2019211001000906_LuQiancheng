@@ -18,7 +18,17 @@
 <h2><a href="${pageContext.request.contextPath}/config">config</a></h2>
 <h2><a href="${pageContext.request.contextPath}/login.jsp">login</a></h2>
 
-<%@include file="footer.jsp" %>
+<form action="${pageContext.request.contextPath}/search" method="get">
+    <input type="text" name="txt" size=30/>
+    <select name="search">
+        <option value="baidu">Baidu</option>
+        <option value="bing">Bing</option>
+        <option value="google">Google</option>
+    </select>
+    <input type="submit" value="Search"/>
+</form>
+
+<%@include file="footer.jsp"%>
 
 </body>
 </html>

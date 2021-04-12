@@ -37,6 +37,7 @@ public class RegisterServlet extends HttpServlet {
         }else{
             System.out.println("连接失败了！");
         }
+//        connection = (Connection) getServletContext().getAttribute("connextion");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -62,45 +63,46 @@ public class RegisterServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String sql1 = "select * from userdb.usertable;";
-        ResultSet resultset = null;
-        PrintWriter pw = response.getWriter();
-
+//        String sql1 = "select * from userdb.usertable;";
+//        ResultSet resultset = null;
+//        PrintWriter pw = response.getWriter();
+//
+//        try {
+//            preparedStatement = connection.prepareStatement(sql1);
+//            resultset = preparedStatement.executeQuery();
+//
+//            pw.print("<table border ='1'>");
+//
+//            pw.print("<tr>");
+//            pw.print("<td>ID</td>");
+//            pw.print("<td>username</td>");
+//            pw.print("<td>password</td>");
+//            pw.print("<td>email</td>");
+//            pw.print("<td>gender</td>");
+//            pw.print("<td>birthdate</td>");
+//            pw.print("</tr>");
+//            while(resultset.next()){
+//                pw.print("<tr>");
+//                pw.print("<td>"+resultset.getInt("id")+"</td>");
+//                pw.print("<td>"+resultset.getString("username")+"</td>");
+//                pw.print("<td>"+resultset.getString("password")+"</td>");
+//                pw.print("<td>"+resultset.getString("email")+"</td>");
+//                pw.print("<td>"+resultset.getString("gender")+"</td>");
+//                pw.print("<td>"+resultset.getString("birthdate")+"</td>");
+//                pw.print("</tr>");
+//            }
+//            pw.print("</table>");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         try {
-            preparedStatement = connection.prepareStatement(sql1);
-            resultset = preparedStatement.executeQuery();
-
-            pw.print("<table border ='1'>");
-
-            pw.print("<tr>");
-            pw.print("<td>ID</td>");
-            pw.print("<td>username</td>");
-            pw.print("<td>password</td>");
-            pw.print("<td>email</td>");
-            pw.print("<td>gender</td>");
-            pw.print("<td>birthdate</td>");
-            pw.print("</tr>");
-            while(resultset.next()){
-                pw.print("<tr>");
-                pw.print("<td>"+resultset.getInt("id")+"</td>");
-                pw.print("<td>"+resultset.getString("username")+"</td>");
-                pw.print("<td>"+resultset.getString("password")+"</td>");
-                pw.print("<td>"+resultset.getString("email")+"</td>");
-                pw.print("<td>"+resultset.getString("gender")+"</td>");
-                pw.print("<td>"+resultset.getString("birthdate")+"</td>");
-                pw.print("</tr>");
-            }
-            pw.print("</table>");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            resultset.close();
+//            resultset.close();
             preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        response.sendRedirect(request.getContextPath()+"/login.jsp");
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);

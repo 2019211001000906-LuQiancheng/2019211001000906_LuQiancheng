@@ -1,3 +1,5 @@
+package com.luqiancheng.week6;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -9,7 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-@WebListener()
+@WebListener
 public class JDBCServlatContextListener implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
 

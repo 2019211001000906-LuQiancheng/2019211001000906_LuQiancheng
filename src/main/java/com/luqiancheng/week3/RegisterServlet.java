@@ -19,25 +19,25 @@ public class RegisterServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
 
-        String driver = getServletConfig().getServletContext().getInitParameter("driver");
-        String url = getServletConfig().getServletContext().getInitParameter("url");
-        String username = getServletConfig().getServletContext().getInitParameter("username");
-        String password = getServletConfig().getServletContext().getInitParameter("password");
-
-        try {
-            Class.forName(driver);
-            this.connection = DriverManager.getConnection(url,username,password);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if(this.connection != null){
-            System.out.println("连接成功数据库了！");
-        }else{
-            System.out.println("连接失败了！");
-        }
-//        connection = (Connection) getServletContext().getAttribute("connextion");
+//        String driver = getServletConfig().getServletContext().getInitParameter("driver");
+//        String url = getServletConfig().getServletContext().getInitParameter("url");
+//        String username = getServletConfig().getServletContext().getInitParameter("username");
+//        String password = getServletConfig().getServletContext().getInitParameter("password");
+//
+//        try {
+//            Class.forName(driver);
+//            this.connection = DriverManager.getConnection(url,username,password);
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        if(this.connection != null){
+//            System.out.println("连接成功数据库了！");
+//        }else{
+//            System.out.println("连接失败了！");
+//        }
+        connection = (Connection) getServletContext().getAttribute("connection");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

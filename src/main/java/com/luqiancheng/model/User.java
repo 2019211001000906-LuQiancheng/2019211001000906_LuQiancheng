@@ -1,6 +1,4 @@
-package com.pojo;
-
-import java.util.Date;
+package com.luqiancheng.model;
 
 public class User {
     private int  id;

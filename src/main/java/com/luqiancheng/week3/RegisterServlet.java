@@ -1,6 +1,6 @@
 package com.luqiancheng.week3;
 
-import com.pojo.User;
+import com.luqiancheng.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,11 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 @WebServlet(value = "/jdbc")
 public class RegisterServlet extends HttpServlet {
     private Connection connection;
@@ -37,7 +34,7 @@ public class RegisterServlet extends HttpServlet {
 //        }else{
 //            System.out.println("连接失败了！");
 //        }
-        connection = (Connection) getServletContext().getAttribute("connection");
+        connection = (Connection) getServletContext().getAttribute("con");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

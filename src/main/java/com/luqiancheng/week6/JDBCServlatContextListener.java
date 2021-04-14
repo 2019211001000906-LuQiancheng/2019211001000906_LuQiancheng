@@ -43,7 +43,7 @@ public class JDBCServlatContextListener implements ServletContextListener,
             e.printStackTrace();
         }
         if(connection != null){
-            sce.getServletContext().setAttribute("connection",connection);
+            sce.getServletContext().setAttribute("con",connection);
             System.out.println("连接成功数据库了！");
         }else{
             System.out.println("连接失败了！");

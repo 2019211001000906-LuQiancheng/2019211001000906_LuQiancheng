@@ -30,14 +30,9 @@ public class UserDao implements IUserDao {
 
     @Override
     public int deleteUser(Connection con, User user) throws SQLException {
-        String sql = "delete from userdb.usertable where id = ? and username = ? and password = ? and email = ? and gender =? and birthdate = ?;";
+        String sql = "delete from userdb.usertable where id = ?;";
         PreparedStatement preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1,user.getId());
-        preparedStatement.setString(2,user.getUsername());
-        preparedStatement.setString(3,user.getPassword());
-        preparedStatement.setString(4,user.getEmail());
-        preparedStatement.setString(5,user.getGender());
-        preparedStatement.setString(6,user.getBirthdate());
         int result = preparedStatement.executeUpdate();
         return result;
     }

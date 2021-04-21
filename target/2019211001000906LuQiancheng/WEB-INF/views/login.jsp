@@ -18,10 +18,32 @@
     }
 %>
 
+<%
+    Cookie[] allCookies = request.getCookies();
+    String username = "",password = "",rememberMeVale="";
+    if (allCookies!=null){
+        //we read 3 cookies
+        for (Cookie c : allCookies) {
+            //get one by one
+            if (c.getName().equals("cUsername")){
+                username = c.getValue();
+            }
+            if (c.getName().equals("cPassword")){
+                password = c.getValue();
+            }
+            if (c.getName().equals("cRememberMe")){
+                rememberMeVale = c.getValue();
+            }
+        }
+    }
+%>
+
+
 <form action="${pageContext.request.contextPath}/login" method="post">
     <h1>Login</h1>
-    UserName:<input type="text" name="username"><br>
-    Password:<input type="password" name="password"><br>
+    UserName:<input type="text" name="username" value="<%=username%>"><br/>
+    Password:<input type="password" name="password" value="<%=password%>"><br/>
+    <input type="checkbox" name="rememberMeVale" value="1" <%=rememberMeVale.equals("1")?"checked":""%>checked/>Remember Me<br/>
     <input type="submit" value="Login">
     <span style="color: red">${requestScope.msg}</span>
 </form>

@@ -5,9 +5,7 @@ import com.luqiancheng.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -50,7 +48,35 @@ public class LoginServlet extends HttpServlet {
             User user = userDao.findByUsernamePassword(connection, username, password);
 
             if (user!=null){
-                request.setAttribute("user",user);
+
+                String rememberMeVale = request.getParameter("rememberMeVale");
+                if (rememberMeVale!=null && rememberMeVale.equals("1")){
+
+
+                    Cookie usernameCookie = new Cookie("cUsername", user.getUsername());
+                    Cookie passwordCookie = new Cookie("cPassword", user.getPassword());
+                    Cookie rememberMeCookie = new Cookie("cRememberMe", rememberMeVale);
+
+
+                    usernameCookie.setMaxAge(5);
+                    passwordCookie.setMaxAge(5);
+                    rememberMeCookie.setMaxAge(5);
+
+                    response.addCookie(usernameCookie);
+                    response.addCookie(passwordCookie);
+                    response.addCookie(rememberMeCookie);
+
+                }
+
+                //valid
+                //week 8 code
+                //create a session
+                HttpSession session = request.getSession();
+                System.out.println("Session id----->"+session.getId());
+
+                session.setMaxInactiveInterval(15);
+
+                session.setAttribute("user",user);
                 request.getRequestDispatcher("WEB-INF/views/userinfo.jsp").forward(request,response);
             }else {
                 request.setAttribute("msg","UserName OR Password Error!");

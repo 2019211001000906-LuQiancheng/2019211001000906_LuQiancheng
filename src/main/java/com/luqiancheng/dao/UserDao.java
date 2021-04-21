@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class UserDao implements IUserDao {
@@ -39,7 +38,7 @@ public class UserDao implements IUserDao {
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
-        String sql = "update userdb.usertable set username = ? and password = ? and email = ? and gender =? and birthdate = ? where id = ?;";
+        String sql = "update userdb.usertable set username = ?, password = ? , email = ? , gender =? , birthdate = ? where id = ?;";
         PreparedStatement preparedStatement = con.prepareStatement(sql);
         preparedStatement.setString(1,user.getUsername());
         preparedStatement.setString(2,user.getPassword());

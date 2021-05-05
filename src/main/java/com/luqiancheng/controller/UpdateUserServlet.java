@@ -40,6 +40,7 @@ public class UpdateUserServlet extends HttpServlet {
         UserDao userDao = new UserDao();
         try {
             userDao.updateUser(connection, user);
+            request.getSession().setAttribute("user",userDao.findById(connection,id));
         } catch (SQLException e) {
             e.printStackTrace();
         }

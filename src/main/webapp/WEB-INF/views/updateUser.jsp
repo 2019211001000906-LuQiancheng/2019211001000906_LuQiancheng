@@ -23,8 +23,8 @@
     username<input type="text" name="username" value="<%=u.getUsername()%>" required/> <br/>
     password<input type="text" name="password" value="<%=u.getPassword()%>" minlength="8" required/> <br/>
     Email<input type="email" name="email" value="<%=u.getEmail()%>" required> <br/>
-    Gender:<input type="radio" name="gender" value="Male" <%=u.getGender().equals("Male") ? "checked":""%> /> Male
-        <input type="radio" name="gender" value="Female" <%=u.getGender().equals("Female") ? "checked":""%>/> Female
+    Gender:<input type="radio" name="gender" value="Male" <%=u.getGender().equalsIgnoreCase("Male") ? "checked":""%> /> Male
+    <input type="radio" name="gender" value="Female" <%=u.getGender().equalsIgnoreCase("Female") ? "checked":""%>/> Female
     <br/>
     Date of Birth:<input type="date" name="birthDate" value="<%=u.getBirthdate()%>" required> <br/>
     <input type="submit" value="Save Changes"/>

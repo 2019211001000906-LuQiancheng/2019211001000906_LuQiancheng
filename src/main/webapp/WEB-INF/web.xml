@@ -33,15 +33,15 @@
     <url-pattern>/homeWork1</url-pattern>
   </servlet-mapping>
 
-  <servlet>
-    <servlet-name>register</servlet-name>
-    <servlet-class>com.luqiancheng.week2.Register</servlet-class>
-  </servlet>
+<!--  <servlet>-->
+<!--    <servlet-name>register</servlet-name>-->
+<!--    <servlet-class>com.luqiancheng.week2.Register</servlet-class>-->
+<!--  </servlet>-->
 
-  <servlet-mapping>
-    <servlet-name>register</servlet-name>
-    <url-pattern>/register</url-pattern>
-  </servlet-mapping>
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>register</servlet-name>-->
+<!--    <url-pattern>/register</url-pattern>-->
+<!--  </servlet-mapping>-->
   <servlet>
     <servlet-name>register1</servlet-name>
     <servlet-class>com.luqiancheng.week2.Register1</servlet-class>

@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet(value = "/jdbc")
+@WebServlet(value = "/register")
 public class RegisterServlet extends HttpServlet {
     private Connection connection;
     @Override
@@ -41,7 +42,7 @@ public class RegisterServlet extends HttpServlet {
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        String gender = request.getParameter("sex");
+        String gender = request.getParameter("gender");
         String birthdate = request.getParameter("date");
         User user = new User(name, password, email, gender, birthdate);
 
@@ -56,10 +57,12 @@ public class RegisterServlet extends HttpServlet {
             preparedStatement.setString(4,user.getGender());
             preparedStatement.setString(5,user.getBirthdate());
             int result = preparedStatement.executeUpdate();
-            System.out.println(result);
+            System.out.println("sql" + sql);
+            System.out.println("n---->" + result);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
 //        String sql1 = "select * from userdb.usertable;";
 //        ResultSet resultset = null;
 //        PrintWriter pw = response.getWriter();
@@ -92,16 +95,9 @@ public class RegisterServlet extends HttpServlet {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-        try {
-//            resultset.close();
-            preparedStatement.close();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        response.sendRedirect(request.getContextPath()+"/login.jsp");
+        response.sendRedirect("login");
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+        request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
     }
 }

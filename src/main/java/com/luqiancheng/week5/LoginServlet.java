@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
         UserDao userDao = new UserDao();
         try {
             User user = userDao.findByUsernamePassword(connection, username, password);
-
+            System.out.println(user);
             if (user!=null){
 
                 String rememberMeVale = request.getParameter("rememberMeVale");
@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 System.out.println("Session id----->"+session.getId());
 
-                session.setMaxInactiveInterval(15);
+                session.setMaxInactiveInterval(7*24*60*60);
 
                 session.setAttribute("user",user);
                 request.getRequestDispatcher("WEB-INF/views/userinfo.jsp").forward(request,response);

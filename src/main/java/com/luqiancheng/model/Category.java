@@ -71,7 +71,7 @@ public class Category {
         String sql = "select * from userdb.category;";
         PreparedStatement pt = con.prepareStatement(sql);
         ResultSet resultSet = pt.executeQuery();
-        if (resultSet.next()){
+        while (resultSet.next()){
             category = new Category();
             category.setCategoryId(resultSet.getInt("CategoryId"));
             category.setCategoryName(resultSet.getString("CategoryName"));

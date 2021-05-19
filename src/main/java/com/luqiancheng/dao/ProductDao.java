@@ -5,10 +5,7 @@ import com.luqiancheng.model.Product;
 import com.luqiancheng.model.User;
 
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +76,12 @@ public class ProductDao implements  IProductDao{
         pt.setInt(1,productId);
         ResultSet resultSet = pt.executeQuery();
         if (resultSet.next()){
-            product = new Product(resultSet.getInt("ProductId"),resultSet.getInt("CategoryId"),resultSet.getString("ProductName"),resultSet.getString("ProductDescription"),resultSet.getBinaryStream("picture"),resultSet.getDouble("price"));
+            product = new Product();
+            product.setProductId(resultSet.getInt("ProductId"));
+            product.setCategoryId(resultSet.getInt("CategoryId"));
+            product.setProductName(resultSet.getString("ProductName"));
+            product.setProductDescription(resultSet.getString("ProductDescription"));
+            product.setPrice(resultSet.getDouble("price"));
         }
         return product;
     }
@@ -92,8 +94,13 @@ public class ProductDao implements  IProductDao{
         PreparedStatement pt = con.prepareStatement(sql);
         pt.setInt(1,categoryId);
         ResultSet resultSet = pt.executeQuery();
-        if (resultSet.next()){
-            product = new Product(resultSet.getInt("ProductId"),resultSet.getInt("CategoryId"),resultSet.getString("ProductName"),resultSet.getString("ProductDescription"),resultSet.getBinaryStream("picture"),resultSet.getDouble("price"));
+        while (resultSet.next()){
+            product = new Product();
+            product.setProductId(resultSet.getInt("ProductId"));
+            product.setCategoryId(resultSet.getInt("CategoryId"));
+            product.setProductName(resultSet.getString("ProductName"));
+            product.setProductDescription(resultSet.getString("ProductDescription"));
+            product.setPrice(resultSet.getDouble("price"));
             productList.add(product);
         }
         return productList;
@@ -108,8 +115,13 @@ public class ProductDao implements  IProductDao{
         pt.setDouble(1,minPrice);
         pt.setDouble(2,maxPrice);
         ResultSet resultSet = pt.executeQuery();
-        if (resultSet.next()){
-            product = new Product(resultSet.getInt("ProductId"),resultSet.getInt("CategoryId"),resultSet.getString("ProductName"),resultSet.getString("ProductDescription"),resultSet.getBinaryStream("picture"),resultSet.getDouble("price"));
+        while (resultSet.next()){
+            product = new Product();
+            product.setProductId(resultSet.getInt("ProductId"));
+            product.setCategoryId(resultSet.getInt("CategoryId"));
+            product.setProductName(resultSet.getString("ProductName"));
+            product.setProductDescription(resultSet.getString("ProductDescription"));
+            product.setPrice(resultSet.getDouble("price"));
             productList.add(product);
         }
         return productList;
@@ -122,8 +134,13 @@ public class ProductDao implements  IProductDao{
         String sql = "select * from userdb.product;";
         PreparedStatement pt = con.prepareStatement(sql);
         ResultSet resultSet = pt.executeQuery();
-        if (resultSet.next()){
-            product = new Product(resultSet.getInt("ProductId"),resultSet.getInt("CategoryId"),resultSet.getString("ProductName"),resultSet.getString("ProductDescription"),resultSet.getBinaryStream("picture"),resultSet.getDouble("price"));
+        while (resultSet.next()){
+            product = new Product();
+            product.setProductId(resultSet.getInt("ProductId"));
+            product.setCategoryId(resultSet.getInt("CategoryId"));
+            product.setProductName(resultSet.getString("ProductName"));
+            product.setProductDescription(resultSet.getString("ProductDescription"));
+            product.setPrice(resultSet.getDouble("price"));
             productList.add(product);
         }
         return productList;
@@ -137,8 +154,13 @@ public class ProductDao implements  IProductDao{
         PreparedStatement pt = con.prepareStatement(sql);
         pt.setString(1,productName);
         ResultSet resultSet = pt.executeQuery();
-        if (resultSet.next()){
-            product = new Product(resultSet.getInt("ProductId"),resultSet.getInt("CategoryId"),resultSet.getString("ProductName"),resultSet.getString("ProductDescription"),resultSet.getBinaryStream("picture"),resultSet.getDouble("price"));
+        while (resultSet.next()){
+            product = new Product();
+            product.setProductId(resultSet.getInt("ProductId"));
+            product.setCategoryId(resultSet.getInt("CategoryId"));
+            product.setProductName(resultSet.getString("ProductName"));
+            product.setProductDescription(resultSet.getString("ProductDescription"));
+            product.setPrice(resultSet.getDouble("price"));
             productList.add(product);
         }
         return productList;
@@ -152,10 +174,28 @@ public class ProductDao implements  IProductDao{
         PreparedStatement pt = con.prepareStatement(sql);
         pt.setInt(1,productId);
         ResultSet resultSet = pt.executeQuery();
-        if (resultSet.next()){
-            product = new Product(resultSet.getInt("ProductId"),resultSet.getInt("CategoryId"),resultSet.getString("ProductName"),resultSet.getString("ProductDescription"),resultSet.getBinaryStream("picture"),resultSet.getDouble("price"));
+        while (resultSet.next()){
+            product = new Product();
+            product.setProductId(resultSet.getInt("ProductId"));
+            product.setCategoryId(resultSet.getInt("CategoryId"));
+            product.setProductName(resultSet.getString("ProductName"));
+            product.setProductDescription(resultSet.getString("ProductDescription"));
+            product.setPrice(resultSet.getDouble("price"));
             productList.add(product);
         }
         return productList;
+    }
+
+    public byte[] getPictureById(Integer productId, Connection con) throws SQLException {
+        byte[] imgByte = null;
+        String sql = "select * from userdb.product where ProductId = ?;";
+        PreparedStatement pt = con.prepareStatement(sql);
+        pt.setInt(1,productId);
+        ResultSet resultSet = pt.executeQuery();
+        while (resultSet.next()){
+            Blob blob = resultSet.getBlob("picture");
+            imgByte = blob.getBytes(1, (int) blob.length());
+        }
+        return imgByte;
     }
 }

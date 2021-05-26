@@ -63,7 +63,7 @@
 
 							<%
 								Product p = (Product) pageContext.findAttribute("p");
-								int pid = p.getProductId();
+								int pid = p.getCategoryId();
 
 								Connection con = (Connection) application.getAttribute("con");
 								String cateName = Category.findByCategoryId(pid, con);

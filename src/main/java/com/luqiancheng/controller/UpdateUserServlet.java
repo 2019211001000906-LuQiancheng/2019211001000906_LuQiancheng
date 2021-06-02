@@ -41,10 +41,10 @@ public class UpdateUserServlet extends HttpServlet {
         try {
             userDao.updateUser(connection, user);
             request.getSession().setAttribute("user",userDao.findById(connection,id));
+            request.getRequestDispatcher("accountDetails").forward(request,response);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("WEB-INF/views/userinfo.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

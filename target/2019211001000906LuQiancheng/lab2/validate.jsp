@@ -1,3 +1,4 @@
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.io.PrintWriter" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
@@ -19,7 +20,7 @@
 <%
    //todo 3: use if check username is admin and password is admin
     if (login.getUsername().equals("admin")&&login.getPassword().equals("admin")){
-        HttpSession session1 = request.getSession(false);
+
 %>
     <%--todo 4: use jsp:forward to welcome.jsp page--%>
     <jsp:forward page="welcome.jsp"/>
@@ -27,10 +28,13 @@
 <%
     }else {
         // todo 6: print username or password error message
-        PrintWriter printWriter = response.getWriter();
-        printWriter.write("username or password error");
+//        PrintWriter printWriter = response.getWriter();
+//        printWriter.write("username or password error");
+        out.println("username or password error");
 
 %>
+<%--<c:out value="username or password error"/>--%>
+
     <%--todo 7: use jsp:include login.jsp page --%>
         <jsp:include page="login.jsp"/>
     <%--todo 8: close else --%>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(filterName = "LoginFilter",
-        urlPatterns ={"/lab2/validate.jsp","/lab2/welcome.jsp"}
+        urlPatterns ={"/lab2/welcome.jsp"}
         )
 public class LoginFilter implements Filter {
 
@@ -22,11 +22,10 @@ public class LoginFilter implements Filter {
         System.out.println("i am in LoginFilter--doFilter()-- request before chain");
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
-
-        if (request.getSession().isNew()){
-            request.getRequestDispatcher("/lab2/welcome.jsp").forward(req, resp);
+        if (request.getSession()!=null&& request.getSession().isNew()){
+            req.getRequestDispatcher("/lab2/welcome.jsp").forward(request, response);
         }else{
-            response.sendRedirect(request.getContextPath()+"/lab2/login.jsp");
+            response.sendRedirect("login.jsp");
         }
         chain.doFilter(req, resp);
         System.out.println("i am in LoginFilter--destroy()-- request after chain");

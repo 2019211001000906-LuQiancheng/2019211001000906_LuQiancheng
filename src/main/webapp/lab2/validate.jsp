@@ -1,3 +1,4 @@
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.io.PrintWriter" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
@@ -27,10 +28,13 @@
 <%
     }else {
         // todo 6: print username or password error message
-        PrintWriter printWriter = response.getWriter();
-        printWriter.write("username or password error");
+//        PrintWriter printWriter = response.getWriter();
+//        printWriter.write("username or password error");
+        out.println("username or password error");
 
 %>
+<%--<c:out value="username or password error"/>--%>
+
     <%--todo 7: use jsp:include login.jsp page --%>
         <jsp:include page="login.jsp"/>
     <%--todo 8: close else --%>
